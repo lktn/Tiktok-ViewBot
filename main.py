@@ -197,7 +197,7 @@ if __name__ == "__main__":
             )[0]
         )
     except:
-        exit(f"{do}[{trang}{kt_code}{do}] {do}Invalid link")
+        exit(f" {do}Invalid link")
     
     _lock = threading.Lock()
     reqs = 0
