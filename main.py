@@ -91,7 +91,7 @@ def send(__device_id, __install_id, cdid, openudid):
                                     "locale": "vi",
                                     "op_region": "VN",
                                     "version_code": version,
-                                    "timezone_name": "Asia/Lam_Dong",
+                                    "timezone_name": "Asia/Ho_Chi_Minh",
                                     "device_id": __device_id,
                                     "sys_region": "VN",
                                     "app_language": "vi",
