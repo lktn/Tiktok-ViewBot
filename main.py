@@ -15,15 +15,6 @@ from console.utils import set_title
 from urllib3.exceptions import InsecureRequestWarning
 from http import cookiejar
 
-trang = "\033[1;37m" 
-do = "\033[1;31m"
-xanh_duong = "\033[1;34m" 
-tim = "\033[1;35m"
-dac_biet = "\033[32;5;245m\033[1m\033[38;5;39m"
-dem = 0
-ㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤ        ㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤ{xanh_duong}TikTok Viewbot by @Teyo{xanh_duong} ')
-banner = str(Colorate.Color(Colors.green, "                                                Tiktok view bot by @teyo"))
-
 class BlockCookies(cookiejar.CookiePolicy):
     return_ok = set_ok = domain_return_ok = path_return_ok = lambda self, *args, **kwargs: False
     netscape = True
@@ -100,7 +91,7 @@ def send(__device_id, __install_id, cdid, openudid):
                                     "locale": "vi",
                                     "op_region": "VN",
                                     "version_code": version,
-                                    "timezone_name": "Asia/Ho_Chi_Minh",
+                                    "timezone_name": "Asia/Lam_Dong",
                                     "device_id": __device_id,
                                     "sys_region": "VN",
                                     "app_language": "vi",
@@ -135,7 +126,7 @@ def send(__device_id, __install_id, cdid, openudid):
                     success += 1
                     _lock.release()
             except:
-                if _lock.locked():_lock.release()
+                if _lock.locked():_lock.release() 
                 fails += 1
                 continue
 
@@ -147,9 +138,6 @@ def rpsm_loop():
     while True:
         initial = reqs
         time.sleep(1.5)
-        rps = round((reqs - initial) / 1.5, 1)
-        rpm = round(rps * 60, 1)
-
 
 def fetch_proxies():
     url_list =[
@@ -184,10 +172,12 @@ if __name__ == "__main__":
         with open('proxies.txt', 'r') as f:
             proxies = f.read().splitlines()
     os.system("cls" if os.name == "nt" else "clear")
-    print(banner)
+    set_title("Tiktok view by teyo")
+    txt = """\n\n
+   TikTok Viewbot by @teyo \n"""
+    print(Colorate.Vertical(Colors.DynamicMIX((Col.light_blue, Col.cyan)), Center.XCenter(txt)))
     try:
         link = str(Write.Input("\n\n            ? - Video Link > ", Colors.green_to_white, interval=0.0001))
-        print(f'{trang} ')
         __aweme_id = str(
             re.findall(r"(\d{18,19})", link)[0]
             if len(re.findall(r"(\d{18,19})", link)) == 1
@@ -197,8 +187,13 @@ if __name__ == "__main__":
             )[0]
         )
     except:
-        exit(f" {do}Invalid link")
+        os.system("cls" if os.name == "nt" else "clear")
+        input(Col.red + "Invalid link" + Col.reset)
+        sys.exit(0)
     
+    os.system("cls" if os.name == "nt" else "clear")
+    print("loading...")
+        
     _lock = threading.Lock()
     reqs = 0
     success = 0
